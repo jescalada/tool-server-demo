@@ -53,3 +53,7 @@ The actual response received by the LLM may differ depending on how OpenWebUI pr
 ##### Tool Server Request and Response
 
 ![image](https://github.com/user-attachments/assets/5ee82095-ec1f-4b01-96e0-718b507b7aa7)
+
+### Caveats/Troubleshooting
+
+This tool server enforces usage of BOTH an `id_token` and an `access_token` as per the latest OIDC specification. The `access_token` must be provided in an `X-Access-Token` header, meanwhile the `id_token` must be provided as an `Authorization` header in the form `Bearer <id-token>`. Please keep this in mind when trying this out.

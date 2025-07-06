@@ -13,8 +13,6 @@ def get_jwk(kid: str):
     global jwks_cache
     if not jwks_cache:
         resp = requests.get(JWKS_URL)
-        print(f"JWKS status: {resp.status_code}")
-        print(f"JWKS response: {resp.text}")
         resp.raise_for_status()
         jwks = resp.json()
         if "keys" not in jwks:

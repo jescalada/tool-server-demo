@@ -1,0 +1,4 @@
+python-jose
+requests
+fastapi
+pydantic

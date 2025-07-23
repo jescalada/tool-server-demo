@@ -2,24 +2,6 @@
 
 A simple Tool Server to demonstrate a JWT authorization flow in OpenWebUI.
 
-### Environment Variables
-
-These three environment variables are required for the server to run properly:
-
-- `OIDC_CLIENT_ID`
-- `OIDC_ISSUER`
-- `JWKS_URL`
-
-Here’s a sample .env configuration:
-
-```env
-OIDC_CLIENT_ID="<YOUR_CLIENT_ID>.apps.googleusercontent.com"
-OIDC_ISSUER="https://accounts.google.com"
-JWKS_URL="https://www.googleapis.com/oauth2/v3/certs"
-```
-
-You can export them manually or use a .env file with something like python-dotenv.
-
 ### Running the Server
 
 First, create and activate a virtual environment (if desired):
@@ -56,4 +38,4 @@ The actual response received by the LLM may differ depending on how OpenWebUI pr
 
 ### Caveats/Troubleshooting
 
-This tool server enforces usage of BOTH an `id_token` and an `access_token` as per the latest OIDC specification. The `access_token` must be provided in an `X-Access-Token` header, meanwhile the `id_token` must be provided as an `Authorization` header in the form `Bearer <id-token>`. Please keep this in mind when trying this out.
+This tool server requires only an `access_token`. The `access_token` must be provided in the `Authorization` header in the form `Bearer <access-token>`. If you want to use this with OpenWebUI, you should `checkout` this specific PR: https://github.com/open-webui/open-webui/pull/14786

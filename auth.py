@@ -1,6 +1,8 @@
 import requests
 from fastapi import HTTPException, status, Depends, Header
+import os
 
+USER_INFO_URL = os.getenv("USER_INFO_URL", "https://openidconnect.googleapis.com/v1/userinfo")
 
 def verify_jwt(authorization: str = Header(...)):
     if not authorization.startswith("Bearer "):
@@ -10,7 +12,7 @@ def verify_jwt(authorization: str = Header(...)):
     print('DEBUG: token', token)
 
     resp = requests.get(
-        "https://openidconnect.googleapis.com/v1/userinfo",
+        USER_INFO_URL,
         headers={"Authorization": f"Bearer {token}"}
     )
     if resp.status_code != 200:

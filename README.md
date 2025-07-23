@@ -2,6 +2,14 @@
 
 A simple Tool Server to demonstrate a JWT authorization flow in OpenWebUI.
 
+### Environment Variables
+
+The only environment variable required is the `USER_INFO_URL` which is used to validate the JWT `access_token`. By default, it's set to `"https://openidconnect.googleapis.com/v1/userinfo"` (which works with Google OIDC). You can set this up by modifying the `.env` file:
+
+```bash
+USER_INFO_URL=https://openidconnect.googleapis.com/v1/userinfo
+```
+
 ### Running the Server
 
 First, create and activate a virtual environment (if desired):
